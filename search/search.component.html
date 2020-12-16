@@ -1,0 +1,56 @@
+
+
+
+<div id ="drawMap" >
+
+
+  <div id="map"></div> 
+  
+
+
+ </div>
+
+
+
+  <div id="seach">
+  
+
+    <mat-form-field appearance="fill">
+      <mat-label>Address or name city</mat-label>
+      <input matInput #vstup type="text" >
+    </mat-form-field>
+
+   
+  
+
+    <button mat-button color="primary" type="button" (click)="searchLocation(vstup.value)">Search</button>
+  
+
+
+   
+
+
+
+  
+  </div>
+  
+
+<div id="list">
+    <mat-grid-list cols="3" rowHeight = "100px" >
+      <mat-grid-tile style="background-color: royalblue; color:white" >Name</mat-grid-tile>
+      <mat-grid-tile style="background-color: royalblue; color:white " >Latitude</mat-grid-tile >
+      <mat-grid-tile style="background-color: royalblue; color:white " >Longitude</mat-grid-tile >
+    
+
+      </mat-grid-list>
+
+    
+  <mat-grid-list cols="3" rowHeight = "100px"  *ngFor="let item of items">
+      <mat-grid-tile style="background-color: rgb(154, 230, 154);">{{item.display_name}}</mat-grid-tile>
+      <mat-grid-tile style="background-color: rgb(154, 230, 154);">{{item.lat}}</mat-grid-tile >
+      <mat-grid-tile style="background-color: rgb(154, 230, 154);">{{item.lon}}</mat-grid-tile > 
+    </mat-grid-list>
+
+
+  </div>
+  

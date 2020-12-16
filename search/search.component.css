@@ -1,0 +1,39 @@
+
+  #map {
+    width: 100%;
+    height: 500px;
+    border: 2px solid white;
+    
+  }
+
+
+  
+
+
+  #seach{
+    margin-top: 1% ;
+    margin-left: 2%;
+
+  }
+
+  #list{
+    
+
+    margin: 2%;
+    word-break: break-all;
+
+  }
+
+  .name{
+ 
+    word-break: break-all;
+   
+   
+  }
+
+  #drawMap{
+    margin-left: 2%;
+    margin-right: 2%;
+
+    margin-top: 1% ;
+  }

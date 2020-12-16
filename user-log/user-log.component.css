@@ -1,0 +1,18 @@
+.password{
+font: small-caption;
+font-size: 16px;
+}
+
+.input{
+    text-align: center;
+    padding: 10%;
+    width: 50%;
+    padding-left:25% ;
+  
+
+}
+
+
+mat-card{
+    background:rgb(154, 230, 154);
+}
