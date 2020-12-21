@@ -1,0 +1,54 @@
+
+
+
+<mat-card>
+<table mat-table [dataSource]="dataSource">
+
+<ng-container matColumnDef="display_name">
+   <th mat-header-cell  class="header" *matHeaderCellDef>Name</th>
+   <td mat-cell *matCellDef="let location">{{location.display_name}}</td>
+</ng-container>
+
+<ng-container matColumnDef="lat">
+    <th mat-header-cell class="header" *matHeaderCellDef>Latitude</th>
+    <td mat-cell *matCellDef="let location">{{location.lat}}</td>
+ </ng-container>
+
+
+ <ng-container  matColumnDef="lon">
+    <th mat-header-cell class="header" *matHeaderCellDef>Longitude</th>
+    <td mat-cell *matCellDef="let location">{{location.lon}}</td>
+ </ng-container>
+
+ <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+<mat-paginator [pageSizeOptions]="[5,10,20]"  showFirstLastButtons></mat-paginator>
+</mat-card>
+
+<mat-card>
+
+   <mat-card-title><h1>Dynamic table</h1></mat-card-title>
+
+
+<mat-card-content>
+<table mat-table [dataSource]="dataSource2" >
+   <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns2" >
+     <th mat-header-cell class="header" *matHeaderCellDef> {{column}} </th>
+     <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+   </ng-container>
+ 
+   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+   <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+ </table>
+
+</mat-card-content>
+
+<button mat-raised-button  class="buttonposition" (click)="addColumn()"> Add column </button>
+ <button mat-raised-button  class="buttonposition" (click)="shuffle()"> Shuffle </button>
+
+</mat-card>
+
+

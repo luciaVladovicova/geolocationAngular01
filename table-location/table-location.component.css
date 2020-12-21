@@ -1,0 +1,34 @@
+table{
+    width: 100%;
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.header{
+    background:rgb(154, 230, 154);
+
+    
+}
+
+mat-card{
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+}
+
+mat-card-title{
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+    font-weight: bold;
+    
+   
+}
+
+.buttonpositionn{
+    padding-left: 10%;
+    padding-right: 5%;
+
+}
