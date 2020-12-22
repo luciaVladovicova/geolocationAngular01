@@ -2,10 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {Observable} from 'rxjs';
 import {LocationService} from '../table-location/location.service';
 import {DataSource} from '@angular/cdk/collections';
-//import {Location} from '../models/location';
-
-import {MatPaginator} from '@angular/material/paginator';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import {HttpClient, HttpParams} from '@angular/common/http';
+
+
 
 
 
@@ -33,11 +34,13 @@ export interface Location{
 export class TableLocationComponent implements OnInit {
 
 
-  @ViewChild(MatPaginator) paginator:MatPaginator;
-  //dataSource= new MatTableDataSource<any>();
 
-  dataSource= new LocationDataSource(this.locationService);
-  displayedColumns:string[] =['display_name', 'lat', 'lon'];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+
+
+  public displayedColumns = ['display_name', 'lat', 'lon'];
+  public dataSource = new MatTableDataSource<Location>();
 
   dataSource2= new LocationDataSource(this.locationService);
   displayedColumns2:string[] =['display_name', 'lat', 'lon'];
@@ -45,18 +48,15 @@ export class TableLocationComponent implements OnInit {
   arrayAddColumn:string[] =[ 'lat', 'lon'];
 
 
- 
-
-
-
-
   columnsToDisplay: string[] = this.displayedColumns2.slice();
+
+
   
-  constructor(private locationService:LocationService) { }
+  constructor(private locationService:LocationService, private http:HttpClient) { }
 
   ngOnInit() {
-    
-   
+  
+    this.getAllLocation();
   }
 
   addColumn() {
@@ -78,7 +78,19 @@ export class TableLocationComponent implements OnInit {
     }
   }
 
+  public getAllLocation= () => {
+    this.http.get("https://nominatim.openstreetmap.org/search?format=json&limit=5&q=slovensko")
+    .subscribe(res => {
+      this.dataSource.data = res as Location[];
+    })
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+  }
 }
+
+
 
 export class LocationDataSource extends DataSource<any>{
   constructor(private locationService:LocationService){
