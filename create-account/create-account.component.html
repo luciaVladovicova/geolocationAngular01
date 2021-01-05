@@ -1,38 +1,103 @@
 
-<mat-horizontal-stepper linear #stepper>
+ 
+ <div class="panel-heading">  
+ <h3 class="panel-title">User Registration</h3>  
+</div> 
+ <mat-horizontal-stepper #stepper>
 
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Username</ng-template>
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
+ <mat-step [stepControl]="frmBasicReg">
+  <form [formGroup]="frmBasicReg" (ngSubmit)="SaveRegistration(frmBasicReg.value)">  
+     
+           
+          <div class="panel-body">  
+         
 
-<mat-step [stepControl]="secondFormGroup" label="Fill out your address">
-  <form [formGroup]="secondFormGroup">
-    <mat-form-field>
-      <mat-label>Address</mat-label>
-      <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-             required>
-    </mat-form-field>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </form>
+            <mat-form-field class="form-group">
+                  <label>Username</label>
+                  <ng-template matStepLabel>Basic login information</ng-template>
+                  <input matInput formControlName="regUserName" type="text" class="form-control" required />  
+            </mat-form-field>
+             
+              
+            <mat-form-field class="form-group">
+              
+                  <label>Email</label>
+                  <input matInput formControlName="regEmail" type="email" class="form-control" required />  
+            </mat-form-field>
+
+          <mat-form-field class="form-group">
+               <label>Password</label>
+                <input matInput formControlName="regPassword" type="text" class="form-control" required />  
+          </mat-form-field>
+          </div>  
+
+
+
+          <div class="panel-footer">  
+            <button mat-button matStepperNext>Next</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>  
+          
+      
+  </form>  
 </mat-step>
-<mat-step>
-  <ng-template matStepLabel>Done</ng-template>
-  <p>You are now done.</p>
-  <div>
-    <button mat-button matStepperPrevious>Back</button>
-    <button mat-button (click)="stepper.reset()">Reset</button>
-  </div>
+
+<mat-step [stepControl]="frmAdress">
+  <form [formGroup]="frmBasicReg" (ngSubmit)="SaveRegistration(frmBasicReg.value)">  
+     
+           
+          <div class="panel-body">  
+         
+
+            <mat-form-field class="form-group">
+                  <label>Name</label>
+                  <ng-template matStepLabel>User information</ng-template>
+                  <input matInput formControlName="regName" type="text" class="form-control" required />  
+            </mat-form-field>
+             
+              
+            <mat-form-field class="form-group">
+              
+                  <label>Surname</label>
+                  <input matInput formControlName="regSurname" type="text" class="form-control" required />  
+            </mat-form-field>
+
+          <mat-form-field class="form-group">
+               <label>Address</label>
+                <input matInput formControlName="regStreet" type="text" class="form-control" required />  
+          </mat-form-field>
+
+       
+      
+       <mat-form-field class="form-group">
+
+        <label>Postal Code</label>
+         <input matInput formControlName="regPostalCode" type="text" class="form-control" required />  
+       </mat-form-field>
+
+       <mat-form-field class="form-group">
+
+        <label>City</label>
+         <input matInput formControlName="regCity" type="text" class="form-control" required />  
+       </mat-form-field>
+
+       <div>
+        <button mat-button matStepperPrevious>Back</button>
+      
+         
+
+      </div>
+          </div>  
+
+
+
+          <div class="panel-footer">  
+            <button mat-button type="submit">Save</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>  
+          
+      
+  </form>  
 </mat-step>
 </mat-horizontal-stepper>
+ 
